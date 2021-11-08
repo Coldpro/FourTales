@@ -6,31 +6,31 @@ namespace KeySystem
 {
     public class KeyItemController : MonoBehaviour
     {
-        [SerializeField] private bool outsideDoor = false;
-        [SerializeField] private bool outsideKey = false;
+        [SerializeField] private bool OutsideDoor = false;
+        [SerializeField] private bool OutsideKey = false;
 
-        [SerializeField] private KeyInventory _KeyInventory = null;
+        [SerializeField] private KeyInventory _keyInventory = null;
 
         private KeyDoorController doorObject;
 
         private void Start()
         {
-            if (outsideDoor)
+            if (OutsideDoor)
             { 
             doorObject = GetComponent<KeyDoorController>();
             }
         }
         
-        public void objectInteraction()
+        public void ObjectInteraction()
         {
-            if (outsideDoor)
+            if (OutsideDoor)
             {
                 doorObject.PlayAnimation();
             }
 
-            else if (outsideDoor)
+            else if (OutsideKey)
             {
-                _KeyInventory.hasOutsideKey = true;
+                _keyInventory.hasOutsideKey = true;
                 gameObject.SetActive(false);
             }
         }
