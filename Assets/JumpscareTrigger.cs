@@ -1,21 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class B2umpTrigger : MonoBehaviour
-{
-    public AudioSource JumpscareOne;
+
+public class JumpscareTrigger : MonoBehaviour {
+
+    public AudioSource Scream;
+    public GameObject ThePlayer;
+    public GameObject JumpCam;
+    public GameObject FlashIng;
 
 
-    void OnTriggerEnter()
-    {
-        GetComponent<AudioSource>().Play();
+    void OnTriggerEnter() {
+        Scream.Play();
+        JumpCam.SetActive(true);
+        ThePlayer.SetActive(false);
+        FlashIng.SetActive(true);
+        
 
     }
+    IEnumerator EndJunp() {
+        yield return new WaitForSeconds (2.03f);
+        ThePlayer.SetActive(true);
+        JumpCam.SetActive(false);
+        FlashIng.SetActive(false);
 
-    IEnumerator PlaylumpMusic()
-    {
-        yield return new WaitForSeconds(0.4f);
-        JumpscareOne.Play();
     }
-
 }
